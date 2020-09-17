@@ -4,18 +4,18 @@ import {
   LOAD_BOARD_SUCCESS,
   LOAD_BOARD_FAILURE,
 } from "../reducer/board";
-import { all, fork, call, put, takeLatest, throttle } from "redux-saga/effects";
+import { all, fork, call, put, takeLatest } from "redux-saga/effects";
 
 function loadBoardAPI(data) {
   console.log("In SAGA, loadBoardAPI, data : ", data);
-  return axios.get(`v1/tours`);
+  return axios.get(`v1/tours`, data);
 }
 
 function* loadBoard(action) {
-  console.log("In SAGA, loadReview, action : ", action);
+  console.log("In SAGA, loadBoard, action : ", action);
   try {
-    const result = yield call(loadBoardAPI, action.id);
-    console.log("In SAGA loadBoard, 목표 : ", result);
+    const result = yield call(loadBoardAPI, action.data);
+    console.log("In SAGA loadBoard, result : ", result);
     yield put({
       type: LOAD_BOARD_SUCCESS,
       // TODO : data: result.data,
@@ -32,7 +32,7 @@ function* loadBoard(action) {
 }
 
 function* watchLoadBoard() {
-  console.log("In SAGA, loadBoard, watchLoadBoard");
+  console.log("In SAGA, loadBoard, watchLoadBoard", loadBoard);
   yield takeLatest(LOAD_BOARD_REQUEST, loadBoard);
 }
 

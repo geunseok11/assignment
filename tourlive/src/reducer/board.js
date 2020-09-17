@@ -10,10 +10,11 @@ export const LOAD_BOARD_REQUEST = "LOAD_BOARD_REQUEST";
 export const LOAD_BOARD_SUCCESS = "LOAD_BOARD_SUCCESS";
 export const LOAD_BOARD_FAILURE = "LOAD_BOARD_FAILURE";
 
-export const loadBoard = () => {
-  console.log("In REDUCER, loadBoard, executes ");
+export const loadBoard = (data) => {
+  console.log("In REDUCER, loadBoard, data ", data);
   return {
     type: LOAD_BOARD_REQUEST,
+    data,
   };
 };
 
@@ -33,8 +34,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         loadBoardLoading: false,
         loadBoardDone: true,
-        loadBoardError: null,
-        review: [action.data, ...state.review],
+        board: action.data,
       };
     case LOAD_BOARD_FAILURE:
       console.log("In REDUCER, LOAD_BOARD_FAILURE action : ", action);
