@@ -32,6 +32,7 @@ export const loadSearchList = (keyword) => {
   return {
     type: LOAD_SEARCHLIST_REQUEST,
     keyword,
+
   };
 };
 

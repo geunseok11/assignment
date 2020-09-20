@@ -12,6 +12,7 @@ import Search from "../component/Search";
 import { TextField, Button } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 
+
 const useStyles = makeStyles((theme) => ({
   title: {
     fontSize: "20px",
@@ -120,12 +121,25 @@ const Board = (props) => {
     boardList = boardList.filter((item) => item.name.indexOf(keyword) >= 0);
   }
 
+
+  const getFormatDate = (date) => {
+    return date.substr(0, 9);
+  };
+
+  const getFormatPrice = (price) => {
+    return price.substr(0, price.length - 3) + " 원";
+  };
+
+  //console.log("뿌리기 board; ", board);
+
   return (
     <React.Fragment>
       <div className={classes.table}>
         <div className={classes.title}>게시판</div>
         <div>
+
           <Search />
+
         </div>
         <Table size="small">
           <TableHead>
@@ -138,6 +152,7 @@ const Board = (props) => {
             </TableRow>
           </TableHead>
           <TableBody>
+
             {/* {searchList !== 0
               ? searchList &&
                 searchList.map((el) => (
@@ -159,6 +174,7 @@ const Board = (props) => {
             {boardList &&
               boardList.map((el) => (
                 <TableRow key={el.id}>
+
                   <TableCell className={classes.content}>{el.id}</TableCell>
                   <TableCell className={classes.content}>{el.title}</TableCell>
                   <TableCell className={classes.content}>
@@ -173,7 +189,6 @@ const Board = (props) => {
           </TableBody>
         </Table>
       </div>
-
       <div
         class="btn-toolbar"
         role="toolbar"
@@ -220,6 +235,7 @@ const Board = (props) => {
           </ul>
         </nav>
       </div>
+
     </React.Fragment>
   );
 };
