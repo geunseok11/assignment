@@ -20,7 +20,6 @@ export const LOAD_SEARCHLIST_SUCCESS = "LOAD_SEARCHLIST_SUCCESS";
 export const LOAD_SEARCHLIST_FAILURE = "LOAD_SEARCHLIST_FAILURE";
 
 export const loadBoard = (data) => {
-  console.log("In REDUCER, loadBoard, data ", data);
   return {
     type: LOAD_BOARD_REQUEST,
     data,
@@ -28,7 +27,6 @@ export const loadBoard = (data) => {
 };
 
 export const loadSearchList = (keyword) => {
-  console.log("In REDUCER,loadSerchList, data : ", keyword);
   return {
     type: LOAD_SEARCHLIST_REQUEST,
     keyword,
@@ -38,7 +36,6 @@ export const loadSearchList = (keyword) => {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD_BOARD_REQUEST:
-      console.log("In REDUCER, LOAD_BOARD_REQUEST,");
       return {
         ...state,
         loadBoardLoading: true,
@@ -46,7 +43,6 @@ const reducer = (state = initialState, action) => {
         loadBoardError: null,
       };
     case LOAD_BOARD_SUCCESS:
-      console.log("In REDUCER, LOAD_BOARD_SUCCESS, action : ", action.data);
       return {
         ...state,
         loadBoardLoading: false,
@@ -54,7 +50,6 @@ const reducer = (state = initialState, action) => {
         board: action.data,
       };
     case LOAD_BOARD_FAILURE:
-      console.log("In REDUCER, LOAD_BOARD_FAILURE action : ", action);
       return {
         ...state,
         loadBoardLoading: false,
@@ -63,7 +58,6 @@ const reducer = (state = initialState, action) => {
       };
 
     case LOAD_SEARCHLIST_REQUEST:
-      console.log("In REDUX, LOAD_SEARCHLIST_REQUEST, action : ", action);
       return {
         ...state,
         loadSearchListLoading: true,
@@ -71,7 +65,6 @@ const reducer = (state = initialState, action) => {
         loadSearchListError: null,
       };
     case LOAD_SEARCHLIST_SUCCESS:
-      console.log("In REDUX, LOAD_SEARCHLIST_SUCCESS, action : ", action);
       return {
         ...state,
         loadSearchListLoading: false,
@@ -79,7 +72,6 @@ const reducer = (state = initialState, action) => {
         searchList: action.data,
       };
     case LOAD_SEARCHLIST_FAILURE:
-      console.log("In REDUX, LOAD_SEARCHLIST_FAILURE, action : ", action);
       return {
         ...state,
         loadSearchListLoading: false,
