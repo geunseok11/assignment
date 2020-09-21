@@ -32,7 +32,6 @@ export const loadSearchList = (keyword) => {
   return {
     type: LOAD_SEARCHLIST_REQUEST,
     keyword,
-
   };
 };
 
@@ -67,7 +66,7 @@ const reducer = (state = initialState, action) => {
       console.log("In REDUX, LOAD_SEARCHLIST_REQUEST, action : ", action);
       return {
         ...state,
-        loadSearchListLoading: true, // search list
+        loadSearchListLoading: true,
         loadSearchListDone: false,
         loadSearchListError: null,
       };
@@ -75,7 +74,7 @@ const reducer = (state = initialState, action) => {
       console.log("In REDUX, LOAD_SEARCHLIST_SUCCESS, action : ", action);
       return {
         ...state,
-        loadSearchListLoading: false, // goods list
+        loadSearchListLoading: false,
         loadSearchListDone: true,
         searchList: action.data,
       };
