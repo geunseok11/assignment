@@ -3,9 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { loadSearchList } from "../reducer/board";
 
 const Search = (props) => {
-  const keyword = useSelector((state) => state?.data);
   const dispatch = useDispatch();
-  // const [value, onChangeText] = useState("");
   const [value, setValue] = useState("");
   var searchList = useSelector((state) => state.searchList?.results);
   console.log("search", searchList);
@@ -28,7 +26,9 @@ const Search = (props) => {
   return (
     <form onSubmit={onPressSearch}>
       <input type="text" value={value} onChange={handleChange} />
-      <button type="submit">검색</button>
+      <button type="submit" to={"/find"}>
+        검색
+      </button>
     </form>
   );
 };

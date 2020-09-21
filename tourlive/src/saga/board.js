@@ -26,8 +26,6 @@ function* loadBoard(action) {
     console.log("In SAGA loadBoard, result : ", result);
     yield put({
       type: LOAD_BOARD_SUCCESS,
-      // TODO : data: result.data,
-      // data: result.data[result.data.length - 1],
       data: result.data,
     });
   } catch (err) {
